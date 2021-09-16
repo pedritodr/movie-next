@@ -1,10 +1,10 @@
+import router from 'next/dist/server/router'
 import Link from 'next/link'
 import conectarDB from '../../lib/dbConnect'
 import Movie from '../../models/Movie'
 
 
 const MoviePage=({success,error,movie})=> {
-  console.log(success,error,movie);
   if(!success){
    return(
     <div className="container text-center my-5">
@@ -14,6 +14,16 @@ const MoviePage=({success,error,movie})=> {
     </Link>
   </div>
    )
+  }
+  const deleteMovie =async (id)=>{
+    try {
+      await fecth(`/api/movie/${id}`,{
+      method : "DELETE",
+      })
+      router.push('/')
+    } catch (error) {
+        console.log(error)
+    }
   }
     return (
         <div className="containter">

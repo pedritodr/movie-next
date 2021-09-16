@@ -6,7 +6,7 @@ const NewMovie = () => {
         plot: "",
       };
 
-      return <Form movieForm={movieForm} />;
+      return <Form formData={movieForm} />;
 }
 
 export default NewMovie
